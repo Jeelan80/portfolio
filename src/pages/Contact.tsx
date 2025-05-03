@@ -375,10 +375,10 @@ const Contact = () => {
                     <div>
                       <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-white">Email</h3>
                       <a
-                        href="mailto:your.email@example.com"
+                        href="mailto:jeelanqwer@gmail.com"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                       >
-                        your.email@example.com
+                        jeelanqwer@gmail.com
                       </a>
                     </div>
                   </motion.div>
@@ -397,10 +397,10 @@ const Contact = () => {
                     <div>
                       <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-white">Phone</h3>
                       <a
-                        href="tel:+1234567890"
+                        href="tel: +91 81979 73038"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                       >
-                        +1 (234) 567-890
+                        +91 81979 73038
                       </a>
                     </div>
                   </motion.div>
@@ -419,7 +419,7 @@ const Contact = () => {
                     <div>
                       <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-white">Location</h3>
                       <p className="text-gray-600 dark:text-gray-400">
-                        City, Country
+                        Bangalore, India
                       </p>
                     </div>
                   </motion.div>
