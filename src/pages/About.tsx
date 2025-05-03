@@ -30,10 +30,11 @@ const About = () => {
               viewport={{ once: true }}
             >
               <div className="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
-                {/* Replace with your image */}
-                <div className="w-full h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
-                  Your Profile Image
-                </div>
+                <img 
+                  src="/Images/Profile_Orginal.jpg" 
+                  alt="Jeelan Basha" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </motion.div>
 
@@ -45,8 +46,8 @@ const About = () => {
             >
               <h2 className="text-3xl font-bold mb-6">Who I Am</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Hello! I'm [Your Name], a passionate web developer and designer based in [Your Location]. 
-                With over [X] years of experience in the field, I've had the opportunity to work on a 
+                Hello! I'm Jeelan Basha, a passionate web developer and designer based in Bangalore. 
+                With over 3+ years of experience in the field, I've had the opportunity to work on a 
                 diverse range of projects that have helped me refine my skills and approach to creating 
                 digital experiences.
               </p>
@@ -64,19 +65,19 @@ const About = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex items-center">
                   <Calendar className="text-primary-600 mr-2" size={20} />
-                  <span className="text-gray-600 dark:text-gray-400">Born: January 1, 1990</span>
+                  <span className="text-gray-600 dark:text-gray-400">Born: May 24, 2004</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="text-primary-600 mr-2" size={20} />
-                  <span className="text-gray-600 dark:text-gray-400">Location: City, Country</span>
+                  <span className="text-gray-600 dark:text-gray-400">Location: Bangalore, India</span>
                 </div>
                 <div className="flex items-center">
                   <Briefcase className="text-primary-600 mr-2" size={20} />
-                  <span className="text-gray-600 dark:text-gray-400">Experience: X Years</span>
+                  <span className="text-gray-600 dark:text-gray-400">Experience: 3+ Years</span>
                 </div>
                 <div className="flex items-center">
                   <GraduationCap className="text-primary-600 mr-2" size={20} />
-                  <span className="text-gray-600 dark:text-gray-400">Degree: Your Degree</span>
+                  <span className="text-gray-600 dark:text-gray-400">Degree: B.E in AI&ML</span>
                 </div>
               </div>
             </motion.div>
