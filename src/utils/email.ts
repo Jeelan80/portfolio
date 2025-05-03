@@ -1,5 +1,8 @@
 import emailjs from '@emailjs/browser';
 
+// Initialize EmailJS with your public key
+emailjs.init("Nfb3TqFV7xh5JS85F");
+
 interface EmailData {
   name: string;
   email: string;
@@ -9,10 +12,10 @@ interface EmailData {
 
 export const sendEmail = async (data: EmailData): Promise<void> => {
   try {
-    // Replace these with your actual EmailJS service ID, template ID, and public key
-    const serviceId = 'YOUR_EMAILJS_SERVICE_ID';
-    const templateId = 'YOUR_EMAILJS_TEMPLATE_ID';
-    const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY';
+    // Your actual EmailJS credentials
+    const serviceId = 'service_2we7o48';  // Your service ID
+    const templateId = 'template_ayf2s0m'; // Your template ID
+    const publicKey = 'Nfb3TqFV7xh5JS85F';   // Your public key
 
     // Prepare the template parameters
     const templateParams = {
