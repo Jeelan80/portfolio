@@ -206,7 +206,7 @@ const Home = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img
-                    src="/Images/Profile_Org.png"
+                    src="/images/Profile_Org.png"
                     alt="Jeelan Basha"
                     className="w-full aspect-square object-cover rounded-xl"
                   />

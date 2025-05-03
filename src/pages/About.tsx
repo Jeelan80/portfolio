@@ -223,7 +223,7 @@ const About = () => {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img 
-                  src="/Images/Profile_Org.jpg" 
+                  src="/images/Profile_Org.jpg" 
                   alt="Jeelan Basha" 
                   className="w-full aspect-square object-cover"
                 />
@@ -513,7 +513,7 @@ const About = () => {
               >
                 <div className="rounded-2xl overflow-hidden bg-white dark:bg-gray-800 p-4 w-full h-full flex items-center justify-center">
                   <img 
-                    src="/Images/PrackZen Logo Org.png" 
+                    src="/images/PrackZen Logo Org.png" 
                     alt="PrackZen Logo" 
                     className="w-4/5 h-4/5 object-contain"
                   />
