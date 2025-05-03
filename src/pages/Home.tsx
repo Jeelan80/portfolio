@@ -1,8 +1,20 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, Palette, Lightbulb } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
+  // Add mobile detection
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
   return (
     <>
       {/* Hero Section */}
@@ -12,19 +24,20 @@ const Home = () => {
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute rounded-full bg-primary-400 dark:bg-primary-600 opacity-20"
+              className="absolute rounded-full bg-primary-400 dark:bg-primary-600 opacity-20 will-change-transform"
               style={{
                 width: Math.random() * 60 + 10,
                 height: Math.random() * 60 + 10,
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
               }}
-              animate={{
+              whileInView={{
                 y: [0, Math.random() * 100 - 50],
                 x: [0, Math.random() * 100 - 50],
                 scale: [0.8, 1.2, 0.8],
                 opacity: [0.1, 0.3, 0.1],
               }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{
                 duration: Math.random() * 10 + 10,
                 repeat: Infinity,
@@ -60,20 +73,22 @@ const Home = () => {
               
               <motion.h1 
                 initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-secondary-500 to-primary-600 bg-size-200 animate-gradient-x leading-tight tracking-tight"
               >
                 Hi, I'm<br />
                 <motion.span 
                   className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-secondary-500 via-primary-600 to-secondary-500 animate-gradient-x"
-                  animate={{ 
+                  whileInView={{ 
                     textShadow: [
                       "0 0 5px rgba(0,0,0,0)", 
                       "0 0 15px rgba(79, 70, 229, 0.5)", 
                       "0 0 5px rgba(0,0,0,0)"
                     ] 
                   }}
+                  viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
                   Jeelan Basha
@@ -82,16 +97,18 @@ const Home = () => {
               
               <motion.p 
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-xl font-medium tracking-wide"
               >
                 A passionate developer crafting
                 <motion.span 
                   className="text-primary-600 dark:text-primary-400 font-semibold"
-                  animate={{ 
+                  whileInView={{ 
                     color: ["#4F46E5", "#EC4899", "#4F46E5"] 
                   }}
+                  viewport={{ once: true }}
                   transition={{ duration: 5, repeat: Infinity }}
                 > beautiful digital </motion.span>
                 experiences
@@ -99,7 +116,7 @@ const Home = () => {
               
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="flex flex-col sm:flex-row gap-4 pt-4"
               >
@@ -204,14 +221,16 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Services */}
+      {/* Featured Services - OPTIMIZED */}
       <section className="section bg-white dark:bg-gray-900 relative overflow-hidden py-20">
-        {/* Animated background */}
+        {/* Simplified background for better performance */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute w-full h-full opacity-5">
             <div className="absolute top-0 left-0 w-full h-full bg-grid-primary-600/20 bg-[length:30px_30px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)]" />
           </div>
-          {[...Array(5)].map((_, i) => (
+          
+          {/* Reduced number of blobs with simplified animations */}
+          {[...Array(isMobile ? 1 : 3)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute rounded-full bg-primary-400 dark:bg-primary-600 opacity-10"
@@ -222,13 +241,12 @@ const Home = () => {
                 left: `${Math.random() * 100}%`,
                 filter: 'blur(50px)',
               }}
-              animate={{
-                y: [0, Math.random() * 50 - 25],
-                x: [0, Math.random() * 50 - 25],
-                scale: [1, 1.1, 1],
+              whileInView={{
+                scale: [1, 1.05, 1],
               }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{
-                duration: Math.random() * 10 + 15,
+                duration: isMobile ? 15 : 10,
                 repeat: Infinity,
                 repeatType: "reverse",
                 ease: "easeInOut",
@@ -252,13 +270,8 @@ const Home = () => {
               viewport={{ once: true }}
               className="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-800/40 text-primary-600 dark:text-primary-300 text-sm font-medium mb-4"
             >
-              <motion.span
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="mr-2 inline-block"
-              >
-                ✨
-              </motion.span>
+              {/* Replace JS animation with CSS for the sparkle */}
+              <span className="mr-2 inline-block animate-gentle-pulse">✨</span>
               My Services
             </motion.div>
             <motion.h2 
@@ -282,13 +295,14 @@ const Home = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {/* Service Card 1 - Web Development */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -15, boxShadow: "0 25px 50px -12px rgba(79, 70, 229, 0.25)" }}
-              className="card p-8 border border-gray-100 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+              whileHover={isMobile ? {} : { y: -15, boxShadow: "0 25px 50px -12px rgba(79, 70, 229, 0.25)" }}
+              className="card p-8 border border-gray-100 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-primary-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               <motion.div 
@@ -299,14 +313,10 @@ const Home = () => {
                 className="bg-primary-100 dark:bg-primary-900/30 p-5 rounded-2xl w-fit mb-6 relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-200 to-transparent opacity-60 dark:opacity-30" />
-                <motion.div
-                  animate={{ 
-                    rotate: [0, 5, 0, -5, 0],
-                  }}
-                  transition={{ duration: 5, repeat: Infinity }}
-                >
+                {/* Simplified icon animation */}
+                <div className={isMobile ? "" : "animate-gentle-float"}>
                   <Code className="text-primary-600 dark:text-primary-400" size={32} />
-                </motion.div>
+                </div>
               </motion.div>
               <motion.h3 
                 initial={{ opacity: 0, x: -20 }}
@@ -327,7 +337,7 @@ const Home = () => {
                 Building responsive and performant websites with modern technologies.
               </motion.p>
               <motion.div
-                whileHover={{ x: 10 }}
+                whileHover={isMobile ? {} : { x: 10 }}
                 transition={{ type: "spring", stiffness: 400 }}
                 className="absolute bottom-8"
               >
@@ -336,25 +346,22 @@ const Home = () => {
                   className="text-primary-600 font-medium inline-flex items-center hover:underline group text-lg"
                 >
                   Learn more 
-                  <motion.span
-                    initial={{ x: 0 }}
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
-                    className="ml-1 bg-primary-100 dark:bg-primary-900/30 rounded-full p-1"
-                  >
-                    <ArrowRight size={18} className="group-hover:ml-1 transition-all" />
-                  </motion.span>
+                  {/* Simplified arrow animation */}
+                  <span className="ml-1 bg-primary-100 dark:bg-primary-900/30 rounded-full p-1 group-hover:translate-x-1 transition-transform">
+                    <ArrowRight size={18} />
+                  </span>
                 </Link>
               </motion.div>
             </motion.div>
 
+            {/* Service Card 2 - UI/UX Design */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ y: -15, boxShadow: "0 25px 50px -12px rgba(236, 72, 153, 0.25)" }}
-              className="card p-8 border border-gray-100 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+              whileHover={isMobile ? {} : { y: -15, boxShadow: "0 25px 50px -12px rgba(236, 72, 153, 0.25)" }}
+              className="card p-8 border border-gray-100 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-500 to-secondary-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               <motion.div 
@@ -365,14 +372,10 @@ const Home = () => {
                 className="bg-secondary-100 dark:bg-secondary-900/30 p-5 rounded-2xl w-fit mb-6 relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary-200 to-transparent opacity-60 dark:opacity-30" />
-                <motion.div
-                  animate={{ 
-                    rotate: [0, 5, 0, -5, 0],
-                  }}
-                  transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
-                >
+                {/* Simplified icon animation */}
+                <div className={isMobile ? "" : "animate-gentle-float"}>
                   <Palette className="text-secondary-600 dark:text-secondary-400" size={32} />
-                </motion.div>
+                </div>
               </motion.div>
               <motion.h3 
                 initial={{ opacity: 0, x: -20 }}
@@ -393,7 +396,7 @@ const Home = () => {
                 Creating intuitive and beautiful user interfaces and experiences.
               </motion.p>
               <motion.div
-                whileHover={{ x: 10 }}
+                whileHover={isMobile ? {} : { x: 10 }}
                 transition={{ type: "spring", stiffness: 400 }}
                 className="absolute bottom-8"
               >
@@ -402,27 +405,24 @@ const Home = () => {
                   className="text-secondary-600 font-medium inline-flex items-center hover:underline group text-lg"
                 >
                   Learn more 
-                  <motion.span
-                    initial={{ x: 0 }}
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut", delay: 0.2 }}
-                    className="ml-1 bg-secondary-100 dark:bg-secondary-900/30 rounded-full p-1"
-                  >
-                    <ArrowRight size={18} className="group-hover:ml-1 transition-all" />
-                  </motion.span>
+                  {/* Simplified arrow animation */}
+                  <span className="ml-1 bg-secondary-100 dark:bg-secondary-900/30 rounded-full p-1 group-hover:translate-x-1 transition-transform">
+                    <ArrowRight size={18} />
+                  </span>
                 </Link>
               </motion.div>
             </motion.div>
 
+            {/* Service Card 3 - Consulting */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ y: -15, boxShadow: "0 25px 50px -12px rgba(79, 70, 229, 0.25)" }}
-              className="card p-8 border border-gray-100 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+              whileHover={isMobile ? {} : { y: -15, boxShadow: "0 25px 50px -12px rgba(79, 70, 229, 0.25)" }}
+              className="card p-8 border border-gray-100 dark:border-gray-800 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-secondary-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-primary-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               <motion.div 
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -431,21 +431,17 @@ const Home = () => {
                 className="bg-primary-100 dark:bg-primary-900/30 p-5 rounded-2xl w-fit mb-6 relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-200 to-transparent opacity-60 dark:opacity-30" />
-                <motion.div
-                  animate={{ 
-                    rotate: [0, 5, 0, -5, 0],
-                  }}
-                  transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-                >
+                {/* Simplified icon animation */}
+                <div className={isMobile ? "" : "animate-gentle-float"}>
                   <Lightbulb className="text-primary-600 dark:text-primary-400" size={32} />
-                </motion.div>
+                </div>
               </motion.div>
               <motion.h3 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600"
+                className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-500"
               >
                 Consulting
               </motion.h3>
@@ -459,7 +455,7 @@ const Home = () => {
                 Providing expert advice on web technologies and digital strategies.
               </motion.p>
               <motion.div
-                whileHover={{ x: 10 }}
+                whileHover={isMobile ? {} : { x: 10 }}
                 transition={{ type: "spring", stiffness: 400 }}
                 className="absolute bottom-8"
               >
@@ -468,14 +464,10 @@ const Home = () => {
                   className="text-primary-600 font-medium inline-flex items-center hover:underline group text-lg"
                 >
                   Learn more 
-                  <motion.span
-                    initial={{ x: 0 }}
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut", delay: 0.4 }}
-                    className="ml-1 bg-primary-100 dark:bg-primary-900/30 rounded-full p-1"
-                  >
-                    <ArrowRight size={18} className="group-hover:ml-1 transition-all" />
-                  </motion.span>
+                  {/* Simplified arrow animation */}
+                  <span className="ml-1 bg-primary-100 dark:bg-primary-900/30 rounded-full p-1 group-hover:translate-x-1 transition-transform">
+                    <ArrowRight size={18} />
+                  </span>
                 </Link>
               </motion.div>
             </motion.div>
@@ -851,3 +843,4 @@ const Home = () => {
 };
 
 export default Home;
+

@@ -135,7 +135,7 @@ const Contact = () => {
   return (
     <>
       {/* Hero Section with animated background */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-800 relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-gradient-to-br from-primary-50 via-white to-secondary-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-800 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute w-full h-full opacity-5">
@@ -153,11 +153,12 @@ const Contact = () => {
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
               }}
-              animate={{
+              whileInView={{
                 y: [0, Math.random() * 100 - 50],
                 x: [0, Math.random() * 100 - 50],
                 opacity: [0.1, 0.3, 0.1],
               }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{
                 duration: Math.random() * 10 + 10,
                 repeat: Infinity,
@@ -375,10 +376,10 @@ const Contact = () => {
                     <div>
                       <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-white">Email</h3>
                       <a
-                        href="mailto:your.email@example.com"
+                        href="mailto:jeelanqwer@gmail.com"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                       >
-                        your.email@example.com
+                        jeelanqwer@gmail.com
                       </a>
                     </div>
                   </motion.div>
@@ -397,10 +398,10 @@ const Contact = () => {
                     <div>
                       <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-white">Phone</h3>
                       <a
-                        href="tel:+1234567890"
+                        href="tel:+91 81979 73038"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                       >
-                        +1 (234) 567-890
+                        +91 81979 73038
                       </a>
                     </div>
                   </motion.div>
@@ -419,7 +420,7 @@ const Contact = () => {
                     <div>
                       <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-white">Location</h3>
                       <p className="text-gray-600 dark:text-gray-400">
-                        City, Country
+                        Bangalore, India
                       </p>
                     </div>
                   </motion.div>

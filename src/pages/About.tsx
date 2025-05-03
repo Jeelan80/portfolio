@@ -22,11 +22,12 @@ const About = () => {
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
               }}
-              animate={{
+              whileInView={{
                 y: [0, Math.random() * 100 - 50],
                 x: [0, Math.random() * 100 - 50],
                 opacity: [0.1, 0.3, 0.1],
               }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{
                 duration: Math.random() * 10 + 10,
                 repeat: Infinity,
@@ -660,3 +661,28 @@ const About = () => {
 };
 
 export default About;
+{/* Animated particles */}
+{[...Array(20)].map((_, i) => (
+<motion.div
+key={i}
+className="absolute rounded-full bg-primary-400 dark:bg-primary-600 opacity-10"
+style={{
+width: Math.random() * 8 + 4,
+height: Math.random() * 8 + 4,
+top: `${Math.random() * 100}%`,
+left: `${Math.random() * 100}%`,
+}}
+whileInView={{
+y: [0, Math.random() * 100 - 50],
+x: [0, Math.random() * 100 - 50],
+opacity: [0.1, 0.3, 0.1],
+}}
+viewport={{ once: false, margin: "-100px" }}
+transition={{
+duration: Math.random() * 10 + 10,
+repeat: Infinity,
+repeatType: "reverse",
+ease: "easeInOut",
+}}
+/>
+))}

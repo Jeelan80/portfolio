@@ -109,11 +109,12 @@ const Projects = () => {
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
               }}
-              animate={{
+              whileInView={{
                 y: [0, Math.random() * 100 - 50],
                 x: [0, Math.random() * 100 - 50],
                 opacity: [0.1, 0.3, 0.1],
               }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{
                 duration: Math.random() * 10 + 10,
                 repeat: Infinity,
@@ -135,11 +136,12 @@ const Projects = () => {
                 left: `${Math.random() * 100}%`,
                 filter: 'blur(70px)',
               }}
-              animate={{
+              whileInView={{
                 y: [0, Math.random() * 50 - 25],
                 x: [0, Math.random() * 50 - 25],
                 scale: [1, 1.1, 1],
               }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{
                 duration: Math.random() * 10 + 15,
                 repeat: Infinity,
@@ -232,12 +234,13 @@ const Projects = () => {
               d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C0,0,0,0,0,0z" 
               fill="currentColor" 
               className="text-white dark:text-gray-900"
-              animate={{
+              whileInView={{
                 d: [
                   "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C0,0,0,0,0,0z",
                   "M321.39,76.44c58-10.79,114.16-40.13,172-51.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,41,906.67,82,985.66,102.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C0,0,0,0,0,0z"
                 ]
               }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{
                 duration: 10,
                 repeat: Infinity,

@@ -23,11 +23,12 @@ const Footer = () => {
               left: `${Math.random() * 100}%`,
               filter: 'blur(70px)',
             }}
-            animate={{
+            whileInView={{
               y: [0, Math.random() * 30 - 15],
               x: [0, Math.random() * 30 - 15],
               scale: [1, 1.05, 1],
             }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{
               duration: Math.random() * 10 + 15,
               repeat: Infinity,
